@@ -30,7 +30,7 @@ class LoginViewController: UIViewController {
                 self.userNameField.text = ""
                 self.passwordField.text = ""
             } else {
-                print("Error: \(error?.localizedDescription)")
+                print("Error: \(String(describing: error?.localizedDescription))")
             }
         }
     }
@@ -45,7 +45,7 @@ class LoginViewController: UIViewController {
                 self.userNameField.text = ""
                 self.passwordField.text = ""
             } else {
-                print("Error: \(error?.localizedDescription)")
+                print("Error: \(String(describing: error?.localizedDescription))")
             }
         }
     }
