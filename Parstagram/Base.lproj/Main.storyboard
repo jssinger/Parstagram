@@ -65,7 +65,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="PhV-oi-U4Z"/>
+                    <navigationItem key="navigationItem" id="PhV-oi-U4Z">
+                        <barButtonItem key="backBarButtonItem" title="Logout" id="dL8-Na-JxB"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="passwordField" destination="iYH-Na-zXd" id="Qsu-3d-yCa"/>
                         <outlet property="userNameField" destination="wOl-Pf-d6X" id="Zh0-cj-fJG"/>
@@ -140,7 +142,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6h4-Bt-vfJ"/>
                     </view>
-                    <navigationItem key="navigationItem" id="zDt-Ad-wxI">
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="zDt-Ad-wxI">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="nxX-dI-5aF">
+                            <connections>
+                                <segue destination="IGM-0b-nbg" kind="unwind" unwindAction="unwindToLogin:" id="1Yu-C1-zjg"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="insta_camera_btn" id="Pcx-ot-iSV">
                             <connections>
                                 <segue destination="GEd-oO-gCu" kind="presentation" id="jag-Ak-f0M"/>
@@ -152,6 +159,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iif-yR-8SF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="IGM-0b-nbg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1884.057971014493" y="132.58928571428572"/>
         </scene>
