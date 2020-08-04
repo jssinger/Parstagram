@@ -61,11 +61,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destVC = segue.destination as! LoginViewController
-        destVC.userNameField.text = ""
-        destVC.passwordField.text = ""
-    }
+    //override func prepare(for segue: UIStoryboardSegue, sender: Any?) {}
     
 
 }
