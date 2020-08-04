@@ -46,6 +46,12 @@ class LoginViewController: UIViewController {
                 self.passwordField.text = ""
             } else {
                 print("Error: \(String(describing: error?.localizedDescription))")
+                let alert = UIAlertController(title: "Account already exists for this username", message: "Please pick a new username", preferredStyle: .alert)
+                let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+                self.userNameField.text = ""
+                self.passwordField.text = ""
             }
         }
     }
