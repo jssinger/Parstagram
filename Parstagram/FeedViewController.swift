@@ -16,7 +16,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     
     var posts = [PFObject]()
-    var feed = [PFObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,26 +30,24 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let query = PFQuery(className:"Posts")
         query.includeKey("author")
+        query.order(byDescending: "createdAt")
         query.limit = 20
         
         query.findObjectsInBackground { (posts, error) in
             if posts != nil {
                 self.posts = posts!
-                for post in self.posts {
-                    self.feed.insert(post, at: 0)
-                }
                 self.tableView.reloadData()
             }
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return feed.count
+        return posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
-        let post = feed[indexPath.row]
+        let post = posts[indexPath.row]
         
         let user = post["author"] as! PFUser
         cell.userNameLabel.text = user.username
