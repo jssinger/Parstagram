@@ -31,6 +31,11 @@ class LoginViewController: UIViewController {
                 self.passwordField.text = ""
             } else {
                 print("Error: \(String(describing: error?.localizedDescription))")
+                let alert = UIAlertController(title: "Error", message: "Incorrect Password", preferredStyle: .alert)
+                let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+                self.passwordField.text = ""
             }
         }
     }
