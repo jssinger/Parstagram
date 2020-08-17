@@ -13,21 +13,32 @@ import AlamofireImage
 class ProfilesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var followButton: UIBarButtonItem!
     
     var posts = [PFObject]()
+    var currentUser = ""
+    var user = [PFObject]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        self.title = currentUser
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        let userQuery = PFUser.query()
+        userQuery?.whereKey("username", equalTo: currentUser)
+        do {
+            user = try userQuery?.findObjects() as! [PFObject]
+        } catch {
+            print("Nope")
+        }
         
         let query = PFQuery(className:"Posts")
-        query.whereKey("author", equalTo: PFUser.current()!)
+        query.whereKey("author", equalTo: user[0])
         query.includeKey("author")
         query.order(byDescending: "createdAt")
         query.limit = 20
@@ -51,7 +62,7 @@ class ProfilesViewController: UIViewController, UITableViewDelegate, UITableView
         let user = post["author"] as! PFUser
         cell.userNameLabel.text = user.username
         cell.captionLabel.text = (post["caption"] as! String)
-        self.title = user.username
+        //self.title = user.username
         
         let imageFile = post["image"] as! PFFileObject
         let urlString = imageFile.url!

@@ -13,9 +13,12 @@ import AlamofireImage
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     
+    
     @IBOutlet weak var tableView: UITableView!
     
     var posts = [PFObject]()
+    var currentUser = PFUser.current()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +44,9 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    @IBAction func onUserNameClick(_ sender: Any) {
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
@@ -48,9 +54,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
         let post = posts[indexPath.row]
-        
         let user = post["author"] as! PFUser
-        cell.userNameLabel.text = user.username
+        cell.userNameButton.setTitle(user.username, for: .normal)
         cell.captionLabel.text = (post["caption"] as! String)
         
         let imageFile = post["image"] as! PFFileObject
@@ -62,7 +67,19 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
 
-    //override func prepare(for segue: UIStoryboardSegue, sender: Any?) {}
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if segue.identifier == "segueToProfile" {
+            let destVC = segue.destination as! ProfilesViewController
+            destVC.currentUser = (currentUser?.username!)!
+            destVC.followButton.title = ""
+        }
+        if segue.identifier == "segueToOtherProfile" {
+            let destVC = segue.destination as! ProfilesViewController
+            let button = sender as! UIButton
+            let username = button.title(for: .normal)
+            destVC.currentUser = username ?? ""
+        }
+    }
     
 
 }
