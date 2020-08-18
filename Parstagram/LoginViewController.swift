@@ -17,7 +17,7 @@ class LoginViewController: UIViewController {
     let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
-        if UserDefaults.standard.bool(forKey: "userLoggedIn") {
+        if UserDefaults.standard.bool(forKey: "userLoggedIn") == true {
             self.performSegue(withIdentifier: "loginSegue", sender: nil)
         }
         super.viewDidLoad()

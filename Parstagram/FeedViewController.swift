@@ -79,6 +79,12 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             let username = button.title(for: .normal)
             destVC.userProfile = username ?? ""
         }
+        if segue.identifier == "segueToCamera" {
+            print("Going to Camera")
+        } else {
+            UserDefaults.standard.set(false, forKey: "userLoggedIn")
+        }
+        
     }
     
 

@@ -182,7 +182,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="reh-yh-buG"/>
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="nxX-dI-5aF">
                             <connections>
-                                <segue destination="IGM-0b-nbg" kind="unwind" unwindAction="unwindToLogin:" id="1Yu-C1-zjg"/>
+                                <segue destination="IGM-0b-nbg" kind="unwind" unwindAction="unwindToLogin:" id="yWz-zc-H6i"/>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
