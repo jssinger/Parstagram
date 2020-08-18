@@ -70,14 +70,14 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.identifier == "segueToProfile" {
             let destVC = segue.destination as! ProfilesViewController
-            destVC.currentUser = (currentUser?.username!)!
+            destVC.userProfile = (currentUser?.username!)!
             destVC.followButton.title = ""
         }
         if segue.identifier == "segueToOtherProfile" {
             let destVC = segue.destination as! ProfilesViewController
             let button = sender as! UIButton
             let username = button.title(for: .normal)
-            destVC.currentUser = username ?? ""
+            destVC.userProfile = username ?? ""
         }
     }
     

@@ -14,9 +14,13 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var userNameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
+        if UserDefaults.standard.bool(forKey: "userLoggedIn") {
+            self.performSegue(withIdentifier: "loginSegue", sender: nil)
+        }
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
     
@@ -27,6 +31,7 @@ class LoginViewController: UIViewController {
         PFUser.logInWithUsername(inBackground: userName, password: password) { (user, error) in
             if user != nil {
                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                UserDefaults.standard.set(true, forKey: "userLoggedIn")
                 self.userNameField.text = ""
                 self.passwordField.text = ""
             } else {

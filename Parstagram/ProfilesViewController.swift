@@ -16,21 +16,22 @@ class ProfilesViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var followButton: UIBarButtonItem!
     
     var posts = [PFObject]()
-    var currentUser = ""
+    var userProfile = ""
+    var currentUser = PFUser.current()
     var user = [PFObject]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        self.title = currentUser
+        self.title = userProfile
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         let userQuery = PFUser.query()
-        userQuery?.whereKey("username", equalTo: currentUser)
+        userQuery?.whereKey("username", equalTo: userProfile)
         do {
             user = try userQuery?.findObjects() as! [PFObject]
         } catch {
@@ -51,6 +52,8 @@ class ProfilesViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    @IBAction func onFollow(_ sender: UIBarButtonItem) {}
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }

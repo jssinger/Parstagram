@@ -107,7 +107,7 @@
         <!--Feed View Controller-->
         <scene sceneID="ilm-DG-sLk">
             <objects>
-                <viewController id="Li4-k5-Umo" customClass="FeedViewController" customModule="Parstagram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FeedNavigationController" id="Li4-k5-Umo" customClass="FeedViewController" customModule="Parstagram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mxc-YO-UZ9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -276,7 +276,11 @@
                         <viewLayoutGuide key="safeArea" id="co3-lU-F2g"/>
                     </view>
                     <navigationItem key="navigationItem" title=" " id="zlP-gS-72m">
-                        <barButtonItem key="rightBarButtonItem" title="Follow" id="Yww-Mt-ffO"/>
+                        <barButtonItem key="rightBarButtonItem" title="Follow" id="Yww-Mt-ffO">
+                            <connections>
+                                <action selector="onFollow:" destination="1OI-eC-bHE" id="P6Z-ou-LHz"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="followButton" destination="Yww-Mt-ffO" id="Y1d-eC-hS5"/>
