@@ -108,7 +108,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
 
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AddCommentCell") as! UITableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AddCommentCell")!
             return cell
         }
     }
@@ -136,7 +136,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let post = posts[indexPath.row]
+        let post = posts[indexPath.section]
         let comments = (post["comments"] as? [PFObject]) ?? []
         
         if indexPath.row == comments.count + 1 {
