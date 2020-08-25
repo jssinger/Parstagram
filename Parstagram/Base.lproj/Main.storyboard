@@ -209,6 +209,27 @@
                                             <outlet property="userNameButton" destination="0nI-KE-Cme" id="SNN-5h-O6y"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="AddCommentCell" id="t6c-y2-ZMc">
+                                        <rect key="frame" x="0.0" y="405" width="414" height="37.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="t6c-y2-ZMc" id="Vmz-nO-VIM">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="37.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a comment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GTl-vG-GAC">
+                                                    <rect key="frame" x="16" y="8" width="121" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="GTl-vG-GAC" firstAttribute="top" secondItem="Vmz-nO-VIM" secondAttribute="top" constant="8" id="ci4-O6-4Rt"/>
+                                                <constraint firstAttribute="bottom" secondItem="GTl-vG-GAC" secondAttribute="bottom" constant="8" id="drf-JX-eQG"/>
+                                                <constraint firstItem="GTl-vG-GAC" firstAttribute="leading" secondItem="Vmz-nO-VIM" secondAttribute="leading" constant="16" id="ytW-rb-bGl"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
